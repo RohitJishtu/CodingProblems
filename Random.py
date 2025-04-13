@@ -81,25 +81,37 @@ l2 = [9,9,9,9]
 # print(10%9)
 
 
-lis1 =[1,2,3,4,-1]
-result=9
+# lis1 =[1,2,3,4,-1]
+# result=9
 
-window=3
-sum=0
-maxum=0   
-count=1
-start=0
-for element in range(len(lis1)):
-
-
-    if count <=3:
-        sum=sum+lis1[element]         
-        count+=1     
-    else:
-        sum-=sum-lis1[start]    
-        start+=1  
-        sum=+sum+list[element]
-
-    maxum=max(sum,maxum)  
+# window=3
+# sum=0
+# maxum=0   
+# count=1
+# start=0
+# for element in range(len(lis1)):
 
 
+#     if count <=3:
+#         sum=sum+lis1[element]         
+#         count+=1     
+#     else:
+#         sum-=sum-lis1[start]    
+#         start+=1  
+#         sum=+sum+list[element]
+
+#     maxum=max(sum,maxum)  
+
+
+'''------------------------------------------------------------------------------------------------------------------
+# Sorting 2 d arrays and Dictionary  
+---------------------------------------------------------------------------------------'''
+
+array=[[1,2],[3,4],[2,3],[4,1]]
+print(f'Unsorted {array=}')
+
+array.sort(key=lambda x:x[0])
+print(f'Sorted on key 0 {array=}')
+
+array.sort(key=lambda x:x[1])
+print(f'Sorted on key 1 {array=}')

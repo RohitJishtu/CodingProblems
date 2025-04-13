@@ -1,52 +1,49 @@
-# 238. Product of Array Except Self
-# Medium
-# Topics
-# Companies
-# Hint
-# Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+# Question
+# Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
 
-# The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
-
-# You must write an algorithm that runs in O(n) time and without using the division operation.
-
- 
-
-# Example 1:
-
-# Input: nums = [1,2,3,4]
-# Output: [24,12,8,6]
-# Example 2:
-
-# Input: nums = [-1,1,0,-3,3]
-# Output: [0,0,9,0,0]
- 
-
-nums = [-1,1,0,-3,3]
+# For example, Given [[0, 30],[5, 10],[15, 20]], return 2.
 
 
-def product_except_self(nums):
-    
-    productbefore=1
-    before = [1]*len(nums)
-    productafter=1
-    after=[1]*len(nums)
-    output=[1]*len(nums)
+    #  > Arrange them 
 
-    for i in range(len(nums)):
+    #  > Start ,end  when ever I iterate to first > I mark the Meeting room as 1 
+    #  > I go to second , I check the start of second , compare it with end of first >
+    #         if its greater > I keep room as 1 
+    #         else : I need onre room , room goes to 2 
+    #         I need minimum of end time now fpr next comparison 
+    #  > I go to next : 
+    #         repeat setp 2 
 
-        before[i]=productbefore
-        productbefore*=nums[i]
 
-        # [1,1,2,6]
+data= [[0,30],  
+        [5,10], 
+        [15,20], 
+        [18,35],
+        [19,35],
+        [21,35] 
+        ]
 
-    for j in range(len(nums)-1,-1,-1):
+def required_meeting_rooms(data):
+    data.sort(key=lambda x:x[0])
+    prev_start=data[0][0]
+    prev_end=data[0][1] 
+    occupied_rooms=1
+    max_needed=1
 
-        after[j]=productafter
-        productafter*=nums[j]
+    for one_meeting in range(1,len(data)):
 
-    for i in range(len(nums)):
-        output[i]=before[i]*after[i]
+        curr_start=data[one_meeting][0]
+        curr_end=data[one_meeting][1]
 
-    return output 
+        if curr_start < prev_end:
+            occupied_rooms+=1 
+        else:
+            occupied_rooms-=1
+        if prev_end > curr_start:
+            prev_end= min(curr_end,prev_end)
+        max_needed=max(occupied_rooms,max_needed)
 
-print(product_except_self(nums))
+        print(f'{max_needed=} {occupied_rooms=} {prev_end=} {curr_start=}')
+    return max_needed
+
+print(required_meeting_rooms(data))

@@ -1,11 +1,9 @@
 # Question
 # Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
-
 # For example, Given [[0, 30],[5, 10],[15, 20]], return 2.
 
 
     #  > Arrange them 
-
     #  > Start ,end  when ever I iterate to first > I mark the Meeting room as 1 
     #  > I go to second , I check the start of second , compare it with end of first >
     #         if its greater > I keep room as 1 
@@ -16,12 +14,12 @@
 
 
 data= [[0,30],  
-        [5,10], 
-        [15,20], 
-        [18,35],
-        [19,35],
-        [21,35] 
-        ]
+            [5,10], 
+            [15,20], 
+            [18,35],
+            [19,35],
+            [21,35] 
+            ]
 
 def required_meeting_rooms(data):
     data.sort(key=lambda x:x[0])
@@ -46,4 +44,40 @@ def required_meeting_rooms(data):
         print(f'{max_needed=} {occupied_rooms=} {prev_end=} {curr_start=}')
     return max_needed
 
-print(required_meeting_rooms(data))
+
+data= [[0,30],    
+            [5,10],  
+            [20,21],
+            [19,35],
+            [21,35] 
+            ]
+# data= [[0, 30],[5, 10],[15, 20]]
+def required_meeting_rooms2(data):
+    start_timer = sorted([x[0] for x in data])
+    end_timer = sorted([x[1] for x in data])
+
+    print(start_timer,end_timer)
+    start=0
+    end=0
+    max_meeting=0
+    current_meeting=0
+
+    for iter in range(end_timer[-1]):
+
+
+        if iter==start_timer[start] and iter < max(start_timer):
+
+            current_meeting+=1
+            start+=1
+        
+        if iter==end_timer[end]:
+
+            current_meeting-=1
+            end+=1
+        if iter >= end_timer[-1]:
+           break
+
+        max_meeting=max(current_meeting,max_meeting)
+    return max_meeting
+
+print(required_meeting_rooms2(data))

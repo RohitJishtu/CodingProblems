@@ -69,7 +69,7 @@ def LevelOrderTraversal(root):
         if root.right:
             Q1.append(Node.right)
             child+=1
-        level+=1
+            level+=1
 
     return Treemap
 
@@ -81,6 +81,8 @@ root = build_tree(values)
 # you are given a tree 
 # values = [3, 9, 20, 4, 11, 15, 7,22,24,55,71]
 # Q1 :Write print Tree Function s1
+
+
 #                 3 
 
 #     9                   20

@@ -32,6 +32,7 @@ def Combinations(nums):
 
         for item in range(start,len(nums)):
             path.append(nums[item])
+            sum=
             backtrack(item+1,path)
             path.pop()
 

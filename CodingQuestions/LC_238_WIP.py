@@ -73,3 +73,7 @@ print(product_byiteself(nums))
 # Time : o(n)+o(n)
 # Space : o(1)
 
+
+
+
+[24,12,8,6]

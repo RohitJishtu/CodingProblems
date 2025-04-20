@@ -1,66 +1,33 @@
-# 49. Group Anagrams
-# Medium
-# Topics
-# Companies
-# Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+def get_power1(number,power):
+    prd=1
 
-
-# Example 1:
-
-# Input: strs = ["eat","tea","tan","ate","nat","bat"]
-# Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
-
-# Explanation:
-# There is no string in strs that can be rearranged to form "bat".
-# The strings "nat" and "tan" are anagrams as they can be rearranged to form each other.
-# The strings "ate", "eat", and "tea" are anagrams as they can be rearranged to form each other.
-# Example 2:
-
-# Input: strs = [""]
-# Output: [[""]]
-
-# Example 3:
-
-# Input: strs = ["a"]
-# Output: [["a"]]
+    for i in range(power):
+        prd=prd*number
+        print(f'prodt is {prd=}')
 
 
 
+def get_power2(number,power):
+    prd=1
 
+    if power <0:
+       number=1/number
+       power=abs(power)
 
-# anagrams are the ones which will have same values and counts 
-# # So for every work I ll make a map 
-# and then if map is there I ll append 
+    def backtrack(number,power):
 
-# AllMaps={}
-# map_word={e:1,a:1,t:1}
-
-# AllMaps[map_word]=map_word
-
-
-# templist=[]
-# if map_word in AllMaps:
-#     templist.append(map_word)
-
-
-# AllMaps = { {e:1,a:1,t:1}:'eat', {e:1,a:1,t:1}: 'tea'......... }
-strs = ["eat","tea","tan","ate","nat","bat"]
-out=[["bat"],["nat","tan"],["ate","eat","tea"]]
-
-
-from collections import Counter
-
-AllMaps={}
-def get_group_anagrams(strs):
-
-    for word in strs:
-        map_word=frozenset(Counter(word))
-
-        if map_word in AllMaps:
-            AllMaps[map_word].extend([word])
+        if power==1:
+           return number
+        if power%2==0:
+            product = backtrack(number,power//2)*backtrack(number,power//2)
         else:
-            AllMaps[map_word]=[word]
+            product=backtrack(number,power//2)*backtrack(number,power//2)*number
 
-    return AllMaps.values()
+        return product
+    print(backtrack(number,power))
 
-print(get_group_anagrams(strs))
+number =2
+power=-2
+
+
+print(get_power2(number,power))

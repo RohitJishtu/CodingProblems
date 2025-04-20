@@ -20,26 +20,35 @@ list1=[1,2,3,4]
 # then again reoeat with 2 
 
 
+        #                             1 
+                    
+        #                 2                   3
+
+        #         3           4           4  
+
+        #     4      Nothing 
+
+        # [1,2,3,4]  [1,2] [1,2,3]  [1,2,4]   [1,3,4] [1,3] [1]
 
 list1=[1,2,3,4]
-def Combinations(nums):
-    result=[]
-    def backtrack(start,path):
 
-        if path:
-            result.append(path[:])
-            print(f'result is {result=}')
+def combinations(list1):
+    output=[]
+    def backtrack(list1,index,temp):
 
-        for item in range(start,len(nums)):
-            path.append(nums[item])
-            sum=
-            backtrack(item+1,path)
-            path.pop()
+        print(f'before {temp=} {output=}')
+        if len(temp)>0:
+            output.append(temp[:])
+
+        for element in range(index,len(list1)):
+            temp.append(list1[element])
+            backtrack(list1,element+1,temp)
+            temp.pop()
+            
+        return output
+
+    backtrack(list1,0, [])
 
 
-    backtrack(0,[])
-    return result
-
-
-print(Combinations(list1))
+print(combinations(list1))
 

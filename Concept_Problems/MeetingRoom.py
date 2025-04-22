@@ -23,7 +23,10 @@ def CanAttend_meetings(meetings):
     
     return canAttend
 
+
+
 meetings= [[0, 30], [5, 10], [21, 25]]
+
 # How many rooms are required 
 # [0:Start > 5:start >10:End  >> 21 Start > 25 :End  > 30 End ]
 # CREATE A list oiut of 2 d list 
@@ -71,7 +74,7 @@ def Max_meeting_rooms_required(meetings):
             room+=1 
 
         else:
-            prev_end=heapq.heappop()
+            heapq.heappop()
             room-=1
 
     return room

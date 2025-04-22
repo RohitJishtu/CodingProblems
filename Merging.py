@@ -48,8 +48,29 @@
 
 # # nlogn
 
+def split(numbers):
+    left=0 
+    right=len(numbers)-1
+    mid=(left+right)//2
+    left= numbers[:mid]
+    right= numbers[mid:]
+    return (left,right)
+
 numbers=[1,4,3,6,5,7,2]
 def sort_merge(numbers):
 
+    # 2. Do it untul len(element)==1
 
-    # two things , 1 . split all the numbers by half until I get individual array 
+    if len(numbers)==0:
+        return 
+    if len(numbers)==1:
+        left= numbers
+        right=[]
+        retur
+    else:
+        left,right=split(numbers)
+        print(f'{left=},{right=}')
+        sort_merge(left)
+        sort_merge(right)
+
+sort_merge(numbers)

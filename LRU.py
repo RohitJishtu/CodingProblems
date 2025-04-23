@@ -41,51 +41,51 @@
 # [null, null, null, 1, null, -1, null, -1, 3, 4]
 
 
-HashMap ={}
-Tuple=()
-
 # LRUCache= I create a object of size (n)
 # size length of the listinside that 
 
-from collections import defaultdict
+from collections import OrderedDict
 
-Map=  [ [1,1], [2,2]]
-Usage=defaultdict{}
 
 class LRU:
 
     def __init__(self,size):
         self.size=size 
-        self.list1={}
-
-    def Insertion(self,element):
-
-        if len(self.lis1) > self.size:
-            CleartheQueue()    
-         self.list1[element[0]=element[1]
+        self.cache=OrderedDict()
 
 
-    def Extraction(self,key):
+    def put(self,element):
+        if len(self.cache)+1 >  self.size:
+           self.CleartheQueue()
+        self.cache[element[0]]=element[1]
 
-        Usage[key]+=1
-        return  self.list1[key]
+
+    def get(self,key):
+        element= self.cache[key[0]]
+        self.cache.move_to_end(key[0])
+        return element
 
 
     def CleartheQueue(self):
-
-        Array=  sorted(Usage.items(),key=x: lambda x[1],ascending=True)
-        keytoremove= Array[0]
-
-        Map[keytoremove].popitem()
+        print('recahed clear queue')
+        if self.cache:
+            self.cache.popitem(last=False)
 
 
 
+# ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+# [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+# Output
+# [null, null, null, 1, null, -1, null, -1, 3, 4]
 
 
-
-Class LRUCache:
-
-
+LRU1= LRU(2)
+LRU1.put([1,1])
+LRU1.put([2,2])
+print(LRU1.cache)
+print('get ',LRU1.get([1]))
+LRU1.put([3,3])
+print(LRU1.cache)
 
 
       

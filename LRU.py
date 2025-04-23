@@ -46,61 +46,44 @@ Tuple=()
 
 # LRUCache= I create a object of size (n)
 # size length of the listinside that 
-#  ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
-# [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
-# Output
-# [null, null, null, 1, null, -1, null, -1, 3, 4]
 
-# from collections import defaultdict
+from collections import defaultdict
 
-# Map=  [ [1,1], [2,2]]
-# Usage=defaultdict{}
+Map=  [ [1,1], [2,2]]
+Usage=defaultdict{}
 
 class LRU:
 
     def __init__(self,size):
         self.size=size 
         self.list1={}
-        self.Frequencymap={}
 
-    def put(self,element):
+    def Insertion(self,element):
 
-        if len(self.list1) >= self.size:
-            self.CleartheQueue()    
-        self.list1[element[0]]=element[1]
+        if len(self.lis1) > self.size:
+            CleartheQueue()    
+         self.list1[element[0]=element[1]
 
 
-    def get(self,key):
+    def Extraction(self,key):
 
-        key1=key[0]
-        if key1 not in self.Frequencymap:
-            self.Frequencymap[key1]=1
-        else:
-            self.Frequencymap[key1]+=1
-        return  self.list1[key1]
+        Usage[key]+=1
+        return  self.list1[key]
 
 
     def CleartheQueue(self):
 
-        Array=  sorted(self.Frequencymap.items(),key=lambda x: x[1],reverse=False)
-        keytoremove= Array[0][0]
+        Array=  sorted(Usage.items(),key=x: lambda x[1],ascending=True)
+        keytoremove= Array[0]
 
-        print(f'{Array=}  {keytoremove=}')
-
-        self.list1.popitem()
-        
-  
+        Map[keytoremove].popitem()
 
 
-LRU1= LRU(2)
-LRU1.put([1, 1])
-print(LRU1.list1)
-LRU1.put([2, 2])
-print(LRU1.list1)
-print(LRU1.get([2]))
-print(LRU1.list1)
-LRU1.put([3, 3])
-print(LRU1.list1)
+
+
+
+
+Class LRUCache:
 
 
 

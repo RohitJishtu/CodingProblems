@@ -38,42 +38,22 @@
 # 6*None(1)
 
 
+temp= 1,1,2,6
+n= [1,2,3,4]
+out=[24,12,8,6]
+def find_productexceptself(n,output=[]):
 
+    product=1
+    output=[[] for n in range(len(n))]
+    output[0]=1 
+    for iter in range(1,len(n)):
+        product=product*n[iter-1]
+        output[iter] = product
+    print(output)
+    product=1
+    for iter2 in range(len(n)-2,-1,-1):
+        product= product*n[iter2+1]
+        output[iter2] *= product    
+    print(output)
 
-
-nums = [1,2,3,4]
-def product_byiteself(nums,output=None):
-    
-    if output==None:
-        output=[]
-    zeroexists=False
-    productall=1
-    
-    if len(nums)==1:
-        return nums[0]
-    
-    for element in nums:
-        if element==0:
-            zeroexists=True
-            element=1
-        productall= element*productall
-        print(f'{productall=}')
-
-    for element in nums:
-
-        if zeroexists==True and element !=0:
-            output.append(0)
-        else:
-            output.append(productall/element)
-
-    return output
-print(product_byiteself(nums))
-
-# Complexity 
-# Time : o(n)+o(n)
-# Space : o(1)
-
-
-
-
-[24,12,8,6]
+find_productexceptself(n,output=[])

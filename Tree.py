@@ -190,6 +190,22 @@ def find_debth_tree_level_order(root):
                 TreeQ.append(Node.right)
     return level 
 
+def find_sumroot(root):
+    
+    if root is None :
+        return 0 , 0 
+
+    ret1,cnt1 = find_sumroot(root.left)
+    ret2,cnt2 = find_sumroot(root.right)
+    sum= root.val+ret1+ret2
+    count= 1 +cnt1+cnt2
+
+    # print(f' left side {find_sumroot (root.left)=}')
+    # print(f' ride side {find_sumroot (root.right)=}')
+    
+    return sum,count
+
+
 
 def find_max_path(root):
     
@@ -218,20 +234,13 @@ def find_max_path(root):
 #  / \   
 # 4   5   
 
-
-
-values = [1, 2, 3, 4, 5]
-root = build_tree(values)
-
-print("In-order Traversal:")
-printTree_PreOrder(root)  # Optional: just to visualize tree
-print("\nTree Depth:", find_depth_Tree(root))
-# print("\nTree Depth Level order:", find_debth_tree_level_order(root))
-
-# print("Average of Subtree Nodes:", AverageofTree(root))
-
-print("\nTree Path:", find_max_path(root))
-find_max_path
+# print("In-order Traversal:")
+# printTree_PreOrder(root)  # Optional: just to visualize tree
+# print("\nTree Depth:", find_depth_Tree(root))
+# # print("\nTree Depth Level order:", find_debth_tree_level_order(root))
+# # print("Average of Subtree Nodes:", AverageofTree(root))
+# print("\nTree Path:", find_max_path(root))
+# find_max_path
 
 # Test with the example
 # values = [3, 9, 20, 4, 11,15,7,22,24,55,71]
@@ -260,6 +269,141 @@ find_max_path
 # 4       5
 
 
+# ------------------------------------------------------------------------------------------------------------------------
+# 129. Sum Root to Leaf Numbers
+# ------------------------------------------------------------------------------------------------------------------------
 
 
+# Medium
+# Topics
+# Companies
+# You are given the root of a binary tree containing digits from 0 to 9 only.
+
+# Each root-to-leaf path in the tree represents a number.
+
+# For example, the root-to-leaf path 1 -> 2 -> 3 represents the number 123.
+# Return the total sum of all root-to-leaf numbers. Test cases are generated so that the answer will fit in a 32-bit integer.
+
+# A leaf node is a node with no children.
+
+ 
+
+# Example 1:
+
+
+# Input: root = [1,2,3]
+# Output: 25
+# Explanation:
+# The root-to-leaf path 1->2 represents the number 12.
+# The root-to-leaf path 1->3 represents the number 13.
+# Therefore, sum = 12 + 13 = 25.
+# Example 2:
+
+
+# Input: root = [4,9,0,5,1]
+# Output: 1026
+# Explanation:
+# The root-to-leaf path 4->9->5 represents the number 495.
+# The root-to-leaf path 4->9->1 represents the number 491.
+# The root-to-leaf path 4->0 represents the number 40.
+# Therefore, sum = 495 + 491 + 40 = 1026.
+
+
+
+values = [1,2,3,None,5,None,4]
+root = build_tree(values)
+
+print("Pre-order Traversal:")
+printTree_PreOrder(root)  # Optional: just to visualize tree
+
+
+#     1
+#    / \
+#   2   3
+#  /     \
+# 4       5
+
+
+
+
+def find_Concat_sumroot(root):
+    
+    if root is None :
+        return '' ,'',0 
+
+    ret1,_,sum_root= find_Concat_sumroot(root.left)
+    ret2,_,sum_root= find_Concat_sumroot(root.right)
+
+    print(f'{root.val=} {ret1=} {ret2=} ')
+
+    conc_left = str(root.val)+str(ret1)
+    conc_right = str(root.val)+str(ret2)
+
+    print(f'{conc_left=} {conc_right=} ')
+
+    sum_root = int(conc_left)+ int(conc_right)
+
+    print(f'{conc_left=} {conc_right=} {sum_root=}')
+    
+    return conc_left,conc_right,sum_root
+
+# print(f' DFS = {find_sumroot(root)} ')
+# print(f' DFS = {find_Concat_sumroot(root)} ')
+# Input: root = [1,2,3,null,5,null,4]
+# print(f'find_Concat_sumroot=  {find_Concat_sumroot(root)}')
+
+        
+
+def find_rightside(root,output=[]):
+
+    if root is None:
+        return 
+    output.append(root.val)
+    if root.right:
+        find_rightside(root.right,output)
+    else:
+        find_rightside(root.left,output)
+
+    # print(output)
+    return output
+
+print(f'DFS output {find_rightside(root)=}')
+
+
+def find_rightside_bfs(root,output=[]):    
+    Q1=deque()
+    Q1.append(root)
+    while Q1:
+        length= len(Q1)
+        for i in range(length):
+            Node=Q1.popleft()
+            if i==(length-1):
+               output.append(Node.val)   
+            if Node.left:
+                Q1.append(Node.left)
+            if Node.right:
+                Q1.append(Node.right)
+    print(f'BFS {output=} ')
+   
+
+print(f'before  {find_rightside_bfs(root)}')
+
+
+
+def switch_tree(root):   
+
+    if root is None:
+        return 
+
+    root.left,root.right=root.right,root.left 
+    switch_tree(root.left)
+    switch_tree(root.right)
+    
+    return  
+
+switch_tree(root)
+find_rightside_bfs(root,[])
+
+    
+   
 

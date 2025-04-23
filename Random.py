@@ -107,11 +107,29 @@ l2 = [9,9,9,9]
 # Sorting 2 d arrays and Dictionary  
 ---------------------------------------------------------------------------------------'''
 
-array=[[1,2],[3,4],[2,3],[4,1]]
-print(f'Unsorted {array=}')
+# array=[[1,2],[3,4],[2,3],[4,1]]
+# print(f'Unsorted {array=}')
 
-array.sort(key=lambda x:x[0])
-print(f'Sorted on key 0 {array=}')
+# array.sort(key=lambda x:x[0])
+# print(f'Sorted on key 0 {array=}')
 
-array.sort(key=lambda x:x[1])
-print(f'Sorted on key 1 {array=}')
+# array.sort(key=lambda x:x[1])
+# print(f'Sorted on key 1 {array=}')
+
+
+
+'''------------------------------------------------------------------------------------------------------------------
+# Sorting 2 d Empty Lists 
+---------------------------------------------------------------------------------------'''
+
+from collections import deque
+Q1=deque()
+
+Q1.append(1)
+Q1.pop()
+List1=[1]
+List1.pop()
+Dict={}
+Dict[1]=2
+if Dict:
+    print(f'{len(Dict)=} esists')

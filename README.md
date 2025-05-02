@@ -134,22 +134,6 @@ The repository is organized into several main directories:
 | LC_643 | Maximum Average Subarray | [Coding problems & Solution/4.MaximumAverageSubarray_Leetcode643.py](Coding%20problems%20&%20Solution/4.MaximumAverageSubarray_Leetcode643.py) |
 | LC_2225 | Find Players With Zero or One Losses | [Coding problems & Solution/8.FindPlayersWithZeroorOneLosses_Leetcode2225.py](Coding%20problems%20&%20Solution/8.FindPlayersWithZeroorOneLosses_Leetcode2225.py) |
 
-## Usage
-
-Each file contains a solution to a specific coding problem. Most solutions are implemented in Python and include comments explaining the approach and time/space complexity.
-
-Example:
-```python
-# Import the file you want to use
-from CodingQuestions.LC_53 import Solution
-
-# Create an instance of the solution
-solution = Solution()
-
-# Call the relevant method
-result = solution.maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4])
-print(result)  # Output: 6
-```
 
 ## File Statistics
 

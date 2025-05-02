@@ -69,7 +69,7 @@ class LRU:
     def CleartheQueue(self):
         print('recahed clear queue')
         if self.cache:
-            self.cache.popitem(last=False)
+            self.cache.popitem(last=)
 
 
 

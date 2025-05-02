@@ -310,7 +310,7 @@ def find_max_path(root):
 
 
 
-values = [1,2,3,None,5,None,4]
+values = [1,2,3,None,5,null,4]
 root = build_tree(values)
 
 print("Pre-order Traversal:")
@@ -402,7 +402,7 @@ def switch_tree(root):
     return  
 
 switch_tree(root)
-find_rightside_bfs(root,[])
+find_rightside_bfs(root)
 
     
    
